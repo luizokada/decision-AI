@@ -10,6 +10,7 @@ class Dataset():
 
     def __init__(self):
         self.age = db['Age']
+        self.bmi = db['BMI']
         self.glucose = db['Glucose']
         self.insulin = db['Insulin']
         self.diab_pedigree = db['DiabetesPedigreeFunction']
