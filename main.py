@@ -1,22 +1,24 @@
 from dataset import Dataset
+from variables.bmi import BMI
 from variables.glucose import Glucose
 from variables.insulin import Insulin
 from variables.diabetes_pedigree import DiabetesPedigreeFunction
 
 dset = Dataset()
+bmi = BMI(dset)
 glucose = Glucose(dset)
 insulin = Insulin(dset)
 diab_pedigree = DiabetesPedigreeFunction(dset)
 
 prob_has_diabetes = {
-    "Age":[],
+    "BMI": bmi.calc_prob_diab(),
     "Glucose": glucose.calc_prob_diab(),
     "Insulin": insulin.calc_prob_diab(),
     "DiabetesPedigreeFunction": diab_pedigree.calc_prob_diab(),
 }
 
 prob_has_not_diabetes = {
-    "Age":[],
+    "BMI": bmi.calc_prob_diab(),
     "Glucose": glucose.calc_prob_not_diab(),
     "Insulin": insulin.calc_prob_not_diab(),
     "DiabetesPedigreeFunction": diab_pedigree.calc_prob_not_diab(),
