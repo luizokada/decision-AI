@@ -4,13 +4,13 @@ from variables.glucose import Glucose
 from variables.insulin import Insulin
 from variables.diabetes_pedigree import DiabetesPedigreeFunction
 from views import InputView
-import assets.references as references
+from assets.references import references
 
 dset = Dataset()
-bmi = BMI(dset, references.ibm_groups)
-glucose = Glucose(dset, references.glucose_groups)
-insulin = Insulin(dset, references.insulin_groups)
-diab_pedigree = DiabetesPedigreeFunction(dset, references.diab_pedigree_groups)
+bmi = BMI(dset, references["ibm"])
+glucose = Glucose(dset, references["glucose"])
+insulin = Insulin(dset, references["insulin"])
+diab_pedigree = DiabetesPedigreeFunction(dset, references["pedigree"])
 
 prob_has_diabetes = {
     "BMI": bmi.calc_prob_diab(),
@@ -18,7 +18,6 @@ prob_has_diabetes = {
     "Insulin": insulin.calc_prob_diab(),
     "DiabetesPedigreeFunction": diab_pedigree.calc_prob_diab(),
 }
-
 prob_has_not_diabetes = {
     "BMI": bmi.calc_prob_not_diab(),
     "Glucose": glucose.calc_prob_not_diab(),
@@ -26,20 +25,20 @@ prob_has_not_diabetes = {
     "DiabetesPedigreeFunction": diab_pedigree.calc_prob_not_diab(),
 }
 
-print("P(key)  outcome = 1")
-for key in prob_has_diabetes:
-    print(key, ":")
-    print()
-    for i in range(len(prob_has_diabetes[key])):
-        print("Class ", i+1, ": ", prob_has_diabetes[key][i])
-    print()
+# print("P(key)  outcome = 1")
+# for key in prob_has_diabetes:
+#     print(key, ":")
+#     print()
+#     for i in range(len(prob_has_diabetes[key])):
+#         print("Class ", i+1, ": ", prob_has_diabetes[key][i])
+#     print()
         
-print("P(key)  outcome = 0")
-for key in prob_has_not_diabetes:
-    print(key, ":")
-    for i in range(len(prob_has_not_diabetes[key])):
-        print("Class ", i+1, ": ", prob_has_not_diabetes[key][i])
-    print()
+# print("P(key)  outcome = 0")
+# for key in prob_has_not_diabetes:
+#     print(key, ":")
+#     for i in range(len(prob_has_not_diabetes[key])):
+#         print("Class ", i+1, ": ", prob_has_not_diabetes[key][i])
+#     print()
 
 input = InputView()
-input.calc_classes()
+input.calc_classes(references)
