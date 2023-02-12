@@ -5,6 +5,8 @@ from variables.insulin import Insulin
 from variables.diabetes_pedigree import DiabetesPedigreeFunction
 from views import InputView, OutputView
 from assets.references import references
+from assets.references import decision_references
+
 
 dset = Dataset()
 bmi = BMI(dset, references["BMI"])
@@ -43,5 +45,5 @@ prob_has_not_diabetes = {
 input = InputView()
 input.calc_classes(references)
 
-output = OutputView(input.classes,references)
+output = OutputView(input.classes,decision_references)
 output.calc_utility(prob_has_diabetes)

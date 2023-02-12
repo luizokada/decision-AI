@@ -70,8 +70,12 @@ references = {
     "Glucose": __glucose_groups,
     "Insulin": __insulin_groups,
     "DiabetesPedigreeFunction": __pedigree_groups,
-    "helthy_decision": _helthy_util,
-    "should_go_on_diet_decision": _should_go_on_diet_util,
-    "need_to_go_on_doctor_decision": _need_to_go_on_doctor_util,
+    
+}
+
+decision_references = {
+    "helthy": _helthy_util,
+    "should_go_on_diet": _should_go_on_diet_util,
+    "need_to_go_on_doctor": _need_to_go_on_doctor_util,
 }
 
