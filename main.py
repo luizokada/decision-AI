@@ -7,10 +7,10 @@ from views import InputView, OutputView
 from assets.references import references
 
 dset = Dataset()
-bmi = BMI(dset, references["ibm"])
-glucose = Glucose(dset, references["glucose"])
-insulin = Insulin(dset, references["insulin"])
-diab_pedigree = DiabetesPedigreeFunction(dset, references["pedigree"])
+bmi = BMI(dset, references["BMI"])
+glucose = Glucose(dset, references["Glucose"])
+insulin = Insulin(dset, references["Insulin"])
+diab_pedigree = DiabetesPedigreeFunction(dset, references["DiabetesPedigreeFunction"])
 
 prob_has_diabetes = {
     "BMI": bmi.calc_prob_diab(),
@@ -43,5 +43,5 @@ prob_has_not_diabetes = {
 input = InputView()
 input.calc_classes(references)
 
-output = OutputView(input.classes)
-output.calc_utility()
+output = OutputView(input.classes,references)
+output.calc_utility(prob_has_diabetes)
