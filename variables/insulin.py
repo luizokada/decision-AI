@@ -3,9 +3,9 @@ class Insulin:
 
     def __init__(self, dset):
         self.groups = {
-            "Class 1": (0, 10),
-            "Class 2": (10, 100),
-            "Class 3": (100, 1000),
+            "Class 1": (0, 140),
+            "Class 2": (140, 199),
+            "Class 3": (199, 10000),
         }
         self.dset = dset
 
@@ -13,7 +13,10 @@ class Insulin:
         probs = []
         dset = self.dset
         for key, value in self.groups.items():
-            condition = (dset.has_diab()) & (dset.insulin > value[0]) & (dset.insulin <= value[1])
+            if(value[0] == 0):
+                condition = (dset.has_diab()) & (dset.insulin >= value[0]) & (dset.insulin <= value[1])
+            else:
+                condition = (dset.has_diab()) & (dset.insulin > value[0]) & (dset.insulin <= value[1])
             prob = dset.loc(condition).shape[0]/dset.qtt_total
             probs.append(prob)
         return probs
@@ -22,7 +25,10 @@ class Insulin:
         probs = []
         dset = self.dset
         for key, value in self.groups.items():
-            condition = (dset.has_not_diab()) & (dset.insulin > value[0]) & (dset.insulin <= value[1])
+            if(value[0] == 0):
+                condition = (dset.has_not_diab()) & (dset.insulin >= value[0]) & (dset.insulin <= value[1])
+            else:
+                condition = (dset.has_not_diab()) & (dset.insulin > value[0]) & (dset.insulin <= value[1])
             prob = dset.loc(condition).shape[0]/dset.qtt_total
             probs.append(prob)
         return probs

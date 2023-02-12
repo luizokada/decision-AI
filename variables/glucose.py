@@ -4,8 +4,8 @@ class Glucose:
     def __init__(self, dset):
         self.groups = {
             "Class 1": (0, 100),
-            "Class 2": (100, 150),
-            "Class 3": (150, 1000),
+            "Class 2": (100, 125),
+            "Class 3": (125, 1000),
         }
         self.dset = dset
 
@@ -13,7 +13,10 @@ class Glucose:
         probs = []
         dset = self.dset
         for key, value in self.groups.items():
-            condition = (dset.has_diab()) & (dset.glucose > value[0]) & (dset.glucose <= value[1])
+            if(value[0] == 0):
+                condition = (dset.has_diab()) & (dset.glucose >= value[0]) & (dset.glucose <= value[1])
+            else:
+                condition = (dset.has_diab()) & (dset.glucose > value[0]) & (dset.glucose <= value[1])
             prob = dset.loc(condition).shape[0]/dset.qtt_total
             probs.append(prob)
         return probs
@@ -22,6 +25,10 @@ class Glucose:
         probs = []
         dset = self.dset
         for key, value in self.groups.items():
+            if(value[0] == 0):
+                condition = (dset.has_not_diab()) & (dset.glucose >= value[0]) & (dset.glucose <= value[1])
+            else:
+                condition = (dset.has_not_diab()) & (dset.glucose > value[0]) & (dset.glucose <= value[1])
             condition = (dset.has_not_diab()) & (dset.glucose > value[0]) & (dset.glucose <= value[1])
             prob = dset.loc(condition).shape[0]/dset.qtt_total
             probs.append(prob)

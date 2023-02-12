@@ -4,7 +4,7 @@ class DiabetesPedigreeFunction:
     def __init__(self, dset):
         self.groups = {
             "Class 1": (0, 0.3),
-            "Class 2": (0.3, 1),
+            "Class 2": (0.3, 10),
         }
         self.dset = dset
 
@@ -12,7 +12,11 @@ class DiabetesPedigreeFunction:
         probs = []
         dset = self.dset
         for key, value in self.groups.items():
-            condition = (dset.has_diab()) & (dset.diab_pedigree > value[0]) & (dset.diab_pedigree <= value[1])
+            if(value[0] == 0):
+                condition = (dset.has_diab()) & (dset.diab_pedigree >= value[0]) & (dset.diab_pedigree <= value[1])
+            else:
+                condition = (dset.has_diab()) & (dset.diab_pedigree > value[0]) & (dset.diab_pedigree <= value[1])
+                    
             prob = dset.loc(condition).shape[0]/dset.qtt_total
             probs.append(prob)
         return probs
@@ -21,7 +25,11 @@ class DiabetesPedigreeFunction:
         probs = []
         dset = self.dset
         for key, value in self.groups.items():
-            condition = (dset.has_not_diab()) & (dset.diab_pedigree > value[0]) & (dset.diab_pedigree <= value[1])
+            if(value[0] == 0):
+                condition = (dset.has_not_diab()) & (dset.diab_pedigree >= value[0]) & (dset.diab_pedigree <= value[1])
+            else:
+                condition = (dset.has_not_diab()) & (dset.diab_pedigree > value[0]) & (dset.diab_pedigree <= value[1])
+            condition = (dset.has_not_diab()) & (dset.diab_pedigree >= value[0]) & (dset.diab_pedigree <= value[1])
             prob = dset.loc(condition).shape[0]/dset.qtt_total
             probs.append(prob)
         return probs
