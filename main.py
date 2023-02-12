@@ -3,7 +3,7 @@ from variables.bmi import BMI
 from variables.glucose import Glucose
 from variables.insulin import Insulin
 from variables.diabetes_pedigree import DiabetesPedigreeFunction
-from views import InputView
+from views import InputView, OutputView
 from assets.references import references
 
 dset = Dataset()
@@ -42,3 +42,6 @@ prob_has_not_diabetes = {
 
 input = InputView()
 input.calc_classes(references)
+
+output = OutputView(input.classes)
+output.calc_utility()

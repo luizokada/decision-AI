@@ -4,8 +4,10 @@ class InputView:
         self.glucose = float(input("Enter a Glucose: "))
         self.insulin = float(input("Enter a Insulin: "))
         self.pedigree = float(input("Enter a Diabetes Pedigree Function: "))
+        self.classes = []
 
     def calc_classes(self, references):
+        classes = self.classes
         classes = []
 
         for k, v in references.items():
@@ -25,4 +27,10 @@ class InputView:
                     break
     
         print(classes)
-                    
+
+class OutputView:
+    def __init__(self, classes):
+        self.classes = classes
+    
+    def calc_utility(self):
+        pass
