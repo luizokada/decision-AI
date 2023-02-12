@@ -4,10 +4,6 @@ db = pd.read_csv('./DB/diabetes.csv')
 
 
 class Dataset():
-    # age: pd.DataFrame
-    # glucose: pd.DataFrame
-    # insulin: pd.DataFrame
-    # diab_pedigree: pd.DataFrame
     qtt_total: int
     qtt_diab: int
     qtt_not_diab: int
