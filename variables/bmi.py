@@ -2,12 +2,8 @@ class BMI:
 
     groups: dict
 
-    def __init__(self, dset):
-        self.groups = {
-            "Class 1": (0.0, 18.5),
-            "Class 2": (18.5, 25),
-            "Class 3": (25, 1000),
-        }
+    def __init__(self, dset, groups):
+        self.groups = groups
         self.dset = dset
 
     def calc_prob_diab(self):

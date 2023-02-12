@@ -5,8 +5,5 @@ class InputView:
         self.glucose = input("Enter a Glucose: ")
         self.diab_pedigree = input("Enter a Diabetes Pedigree Function: ")
 
-    def calc_prob_has_diab(self, dataset_prob):
-        pass
-
-    def calc_prob_has_not_diab(self, dataset_prob):
+    def calc_classes(self):
         pass

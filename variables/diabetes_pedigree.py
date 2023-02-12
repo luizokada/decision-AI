@@ -1,11 +1,8 @@
 class DiabetesPedigreeFunction:
     groups: dict
 
-    def __init__(self, dset):
-        self.groups = {
-            "Class 1": (0, 0.3),
-            "Class 2": (0.3, 10),
-        }
+    def __init__(self, dset, groups):
+        self.groups = groups
         self.dset = dset
 
     def calc_prob_diab(self):

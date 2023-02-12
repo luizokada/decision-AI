@@ -1,12 +1,8 @@
 class Glucose:
     groups: dict
 
-    def __init__(self, dset):
-        self.groups = {
-            "Class 1": (0, 100),
-            "Class 2": (100, 125),
-            "Class 3": (125, 1000),
-        }
+    def __init__(self, dset, groups):
+        self.groups = groups
         self.dset = dset
 
     def calc_prob_diab(self):
