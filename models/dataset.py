@@ -1,6 +1,6 @@
 import pandas as pd
 
-db = pd.read_csv('./DB/diabetes.csv')
+db = pd.read_csv('./db/diabetes.csv')
 
 
 class Dataset():
@@ -18,7 +18,6 @@ class Dataset():
         self.qtt_diab = db.loc[self.has_diab()].shape[0]
         self.qtt_not_diab = self.qtt_total - self.qtt_diab
 
-    #@property
     def has_diab(self):
         return db['Outcome'] == 1
 

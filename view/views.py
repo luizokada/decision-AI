@@ -35,9 +35,9 @@ class OutputView:
         self.should_go_on_diet=references.get("should_go_on_diet")
         self.need_to_go_on_doctor=references.get("need_to_go_on_doctor")  
         self.decisions_dict = {
-        "helthy":0,
-        "should_go_on_diet":0,
-        "need_to_go_on_doctor":0
+            "helthy":0,
+            "should_go_on_diet":0,
+            "need_to_go_on_doctor":0
         }
        
     
@@ -55,6 +55,5 @@ class OutputView:
         max_key = [k for k, v in self.decisions_dict.items() if v == max_value][0]
    
         print("{}".format(3*"\n"))
-        print(getattr(self,max_key)["output"])  
-        print("UTILIDADE DA DECISÃO: ",max_value)
-        pass
+        print(getattr(self,max_key)["output"]+"\n")  
+        print("UTILIDADE DA DECISÃO: ", max_value)
