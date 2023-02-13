@@ -21,13 +21,6 @@ prob_has_diabetes = {
     "DiabetesPedigreeFunction": diab_pedigree.calc_prob_diab(),
 }
 
-prob_has_not_diabetes = {
-    "BMI": bmi.calc_prob_not_diab(),
-    "Glucose": glucose.calc_prob_not_diab(),
-    "Insulin": insulin.calc_prob_not_diab(),
-    "DiabetesPedigreeFunction": diab_pedigree.calc_prob_not_diab(),
-}
-
 input = InputView()
 input.calc_classes(references)
 

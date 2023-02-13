@@ -1,9 +1,9 @@
 class InputView:
     def __init__(self):
-        self.BMI = float(input("Enter a IBM: "))
-        self.Glucose = float(input("Enter a Glucose: "))
-        self.Insulin = float(input("Enter a Insulin: "))
-        self.DiabetesPedigreeFunction = float(input("Enter a Diabetes Pedigree Function: "))
+        self.BMI = float(input("Valor de IMC: "))
+        self.Glucose = float(input("Valor de Glicose: "))
+        self.Insulin = float(input("Valor de Insulina: "))
+        self.DiabetesPedigreeFunction = float(input("Valor de DiabetesPedigreeFunction: "))
         self.classes = []
 
     def calc_classes(self, references):
@@ -54,6 +54,6 @@ class OutputView:
         max_value = max(self.decisions_dict.values())
         max_key = [k for k, v in self.decisions_dict.items() if v == max_value][0]
    
-        print("{}".format(3*"\n"))
+        print("{}".format(2*"\n"))
         print(getattr(self,max_key)["output"]+"\n")  
         print("UTILIDADE DA DECISÃO: ", max_value)

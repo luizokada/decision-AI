@@ -1,6 +1,6 @@
 import pandas as pd
 
-db = pd.read_csv('./db/diabetes.csv')
+db = pd.read_csv('db/diabetes.csv')
 
 
 class Dataset():
